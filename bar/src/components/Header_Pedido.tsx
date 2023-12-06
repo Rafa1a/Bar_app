@@ -47,10 +47,11 @@ const Header_pedido = (props:any) => {
 
   const id_pedido = () => {
     const itens = props.pedidos.find(item => item.id === props.id);
-    const itens_chapeiro = itens.itens.filter(item => item.categoria === 'Bar ')
+    const itens_chapeiro = itens.itens.filter(item => item.categoria === 'bar')
+    // console.log(itens_chapeiro)
     return itens_chapeiro ? itens_chapeiro : [];
   };
-
+  
   const pedido_itens = id_pedido();
   const array_pdf = [props.numero_mesa, props.pegar_local, props.rua, props.numero, props.dinheiro, props.cartao, props.pix];
 

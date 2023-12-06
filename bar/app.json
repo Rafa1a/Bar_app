@@ -4,12 +4,12 @@
     "slug": "bar",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/image/bar_icone.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/image/bar_icone.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#202124"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,9 +19,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./src/assets/image/bar_icone.png",
+        "backgroundColor": "#202124"
+      },
+      "package": "com.madrugao.bar"
     },
     "web": {
       "favicon": "./assets/favicon.png"
