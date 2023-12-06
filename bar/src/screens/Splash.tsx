@@ -73,7 +73,7 @@ const Splash = ({ navigation,onFetchPedidos,onFetchUser,pedidos }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={require('../assets/image/chapeiro_icone.png')} style={styles.image} />
+      <Image source={require('../assets/image/bar_icone.png')} style={styles.image} />
       <Text style={styles.header}>Madrugão</Text>
       <LinearProgress
         style={{ marginVertical: 10 }}

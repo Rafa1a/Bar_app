@@ -12,7 +12,7 @@ import { setMessage } from './message';
 export const startPedidosListener = () => {
   return (dispatch: any) => {
     try{
-      const q = query(collection(db, "pedidos"), where("status_chapeiro", "==", true));
+      const q = query(collection(db, "pedidos"), where("status_bar", "==", true));
       onSnapshot(q, (snapshot) => {
         const pedidos: any[] = [];
           snapshot.forEach((doc) => {
@@ -48,7 +48,7 @@ export const fetchatualizar_pedido = (id:any) => {
 
     const pedidoRef = doc(db, 'pedidos', id);
     await updateDoc(pedidoRef, {
-      status_chapeiro: false
+      status_bar: false
     });
     
   }

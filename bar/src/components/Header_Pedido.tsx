@@ -47,7 +47,7 @@ const Header_pedido = (props:any) => {
 
   const id_pedido = () => {
     const itens = props.pedidos.find(item => item.id === props.id);
-    const itens_chapeiro = itens.itens.filter(item => item.categoria === 'comidas' && (item.categoria_2 === 'hotdogs' || item.categoria_2 === 'lanches'))
+    const itens_chapeiro = itens.itens.filter(item => item.categoria === 'Bar ')
     return itens_chapeiro ? itens_chapeiro : [];
   };
 

@@ -51,7 +51,7 @@ export default class Pedido extends React.Component<pedido_props> {
     const username = this.props.name_on?<Text style={this.props.styles?styles.textindex0:styles.text}>{this.props.name_on}</Text>:null
       // styles diz se esta em primeiro ou nao na ordem de pedidos || refere a cor pois o primeiro item o funco é branco e o restante é preto ...
     const icon_lanche = this.props.styles ?
-     <Avatar size={60} source={require('../assets/image/lanche.png')} 
+     <Avatar size={60} source={require('../assets/image/drink.png')} 
      containerStyle={{
        position:'absolute',
        bottom:5,
