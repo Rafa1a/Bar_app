@@ -41,7 +41,7 @@ export default (props: any) => {
    :null
         // retorna o nome do item a ser feito e se tiver adicionais e retiradas
     return (
-        <SafeAreaView style={styles.container}> 
+        <View style={styles.container}> 
         <View style={styles.container_2}>
        
             <View style={props.mesa?styles.container_3_mesa:styles.container_3||props.deleteitem?styles.container_3_mesa:styles.container_3}>
@@ -64,7 +64,7 @@ export default (props: any) => {
             </View>
         </View>
         
-    </SafeAreaView>
+    </View>
     );
 }
 
