@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     height:Dimensions.get('window').width*1/5.5,
     width: Dimensions.get('window').width/1.29,
-    marginRight:"10%",
-    marginLeft:"10%",
+    // marginRight:"10%",
+    // marginLeft:"10%",
     
   },
   containerM: {
@@ -161,16 +161,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin:10,
     height:"100%",
-    width: "80%"
-  },
-  container_lista_miniindex0: {
-    flex:1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    height:"100%",
     width: "100%"
   },
+  
 });
 export default Pedido;

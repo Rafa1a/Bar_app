@@ -33,7 +33,10 @@ import {
             <TouchableOpacity style={{flexDirection:'row',alignItems:'center',justifyContent:'space-around',backgroundColor: '#5e6163',borderRadius:20,width:'50%'}}
             onPress={() => setBebidas(!bebidas)}
             >
-                <Text style={{fontFamily:'Roboto-Regular',color:'#fff',fontSize:15}}>x{props.item.quantidade}</Text>
+                <Text style={{fontFamily:'Roboto-Regular',color:'#fff',fontSize:15}}
+                numberOfLines={1} 
+                ellipsizeMode='tail'
+                >x{props.item.quantidade}</Text>
 
                 {props.item.categoria === 'bebidas'?
                 <Switch
@@ -48,17 +51,6 @@ import {
 
 
 const styles = StyleSheet.create({
-    container_lista_mini: {
-        flex:1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#3C4043',
-        borderRadius: 20,
-        margin:10,
-        height:"100%",
-        width: "80%"
-      },
       container_lista_miniindex0: {
         flex:1,
         flexDirection: 'column',
