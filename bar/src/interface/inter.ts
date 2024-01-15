@@ -20,6 +20,7 @@ export interface pedido_props {
     pix?:boolean;
     cartao?:cartao;
 
+    itens?:Item[]
   }
 export interface cartao{
     visa:boolean;
@@ -40,6 +41,7 @@ export interface user_on{
     categoria_2?: string;
     retirar_p: string[];
     adicionar_p: string[];
+    quantidade: number;
   }
   export interface pedido_inter {
     id?:string,
