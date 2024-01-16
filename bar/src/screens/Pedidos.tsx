@@ -28,7 +28,7 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
     // console.log('pedido_bebidas_filter',pedido_bebidas_filter)
     //juntando o array de pedidos_bar com o array de pedidos_bebidas
     const array_union = Array.from(new Set([...pedidos_bar, ...pedido_bebidas_filter].flat().filter(Boolean)));
-
+    array_union.sort((a,b) => a.ordem - b.ordem);
     setPedidos_array(array_union);
 
     console.log('atualixou')
