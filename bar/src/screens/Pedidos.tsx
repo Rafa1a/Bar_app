@@ -17,8 +17,22 @@ interface Props {
   navigation: NavigationProp<any,any>;
 }
 const Pedidos = ({ pedidos ,users,navigation }:Props) => {
-  
-  
+  const [pedidos_array, setPedidos_array] = React.useState(pedidos);
+  useEffect(() => {
+    const pedidos_bar = pedidos.filter(pedido => pedido.status_bar === true);
+    const pedidos_bebidas = pedidos.filter(pedido => pedido.itens.some(item => item.categoria === 'bebidas'));
+    //tratemento de bebidas caso ja exista no array_bebidas do pedido
+    const pedido_bebidas_filter = pedidos_bebidas.filter(pedido => {
+      return pedido.itens.some(item => (pedido.array_bebidas?.includes(item.id) === false || pedido.array_bebidas===undefined) && item.categoria === 'bebidas');
+    });
+    // console.log('pedido_bebidas_filter',pedido_bebidas_filter)
+    //juntando o array de pedidos_bar com o array de pedidos_bebidas
+    const array_union = Array.from(new Set([...pedidos_bar, ...pedido_bebidas_filter].flat().filter(Boolean)));
+
+    setPedidos_array(array_union);
+
+    console.log('atualixou')
+  }, [pedidos]);
   
   return (
     <SafeAreaView style={styles.container}>
@@ -27,9 +41,9 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
       
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={pedidos}
+        data={pedidos_array}
         //item ja retorna apenas os status_chapeiro de acordo com o back0end query
-        keyExtractor={item => `${item.id}`}
+        keyExtractor={(item,index) => `${item.id}`}
         renderItem={({ item,index }) => {
            
             // condicoes para realizar a pesquisa e filtro sobre os resultados obtidos
@@ -37,9 +51,13 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
             
               if(index === 0) {
 
-                return <Pedido  itens={item.itens} id={item.id} key={item.id} styles numero_mesa={item.numero_mesa} navigation={navigation} />;
+                return <Pedido  
+                array_bebidas={item.array_bebidas}
+                itens={item.itens} id={item.id} key={item.id} styles numero_mesa={item.numero_mesa} navigation={navigation} />;
 
-              }else return <Pedido  itens={item.itens} id={item.id} key={item.id} numero_mesa={item.numero_mesa} navigation={navigation} />;
+              }else return <Pedido  
+              array_bebidas={item.array_bebidas}
+              itens={item.itens} id={item.id} key={item.id} numero_mesa={item.numero_mesa} navigation={navigation} />;
               
             } else if (item.localidade === 'ONLINE') {
               // se algum user tem um pedido id_user na lista de pedidos novos pega o nome e image
@@ -49,11 +67,17 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
   
               if(index === 0) {
 
-                return <Pedido itens={item.itens} id={item.id} key={item.id} styles name_on={name} image_on={image} navigation={navigation}/>;
+                return <Pedido 
+                array_bebidas={item.array_bebidas}
+                itens={item.itens} id={item.id} key={item.id} styles name_on={name} image_on={image} navigation={navigation}/>;
 
               }else return item.id_user ?  
-              <Pedido itens={item.itens} id={item.id} key={item.id} name_on={name} image_on={image} navigation={navigation}/> :  
-              <Pedido itens={item.itens} id={item.id} key={item.id} name_on='Anonymo' navigation={navigation} />
+              <Pedido 
+              array_bebidas={item.array_bebidas}
+              itens={item.itens} id={item.id} key={item.id} name_on={name} image_on={image} navigation={navigation}/> :  
+              <Pedido 
+              array_bebidas={item.array_bebidas}
+              itens={item.itens} id={item.id} key={item.id} name_on='Anonymo' navigation={navigation} />
              
             } else if (item.localidade === 'OUTROS') {
   
@@ -61,7 +85,9 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
 
                 return (
                   <Pedido 
-                    itens={item.itens} 
+                    
+                  array_bebidas={item.array_bebidas}
+                  itens={item.itens} 
                     id={item.id?item.id:''} 
                     key={item.id} 
                     styles 
@@ -72,7 +98,9 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
 
               }else return (
               <Pedido 
-                itens={item.itens} 
+                
+              array_bebidas={item.array_bebidas}
+              itens={item.itens} 
                 id={item.id?item.id:''} key={item.id} 
                 name_on='Anonymo' 
                 rua = {item.rua}

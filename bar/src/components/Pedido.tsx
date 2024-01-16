@@ -58,7 +58,7 @@ import Flatlist_mini_lista from './Flatlist_mini_lista';
     // mini lista do itens do pedido
     const [itens, setItens] = React.useState(props.itens);
     useEffect(() => {
-      console.log(props.itens)
+      // console.log(props.itens)
       const itens_bar_bebidas = props.itens.filter((item) => item.categoria === 'bar' || item.categoria === 'bebidas');
       setItens(itens_bar_bebidas);
     }, [props.itens])
@@ -82,7 +82,7 @@ import Flatlist_mini_lista from './Flatlist_mini_lista';
           <FlatList
             data={itens}
             renderItem={({ item }) =>(
-                <Flatlist_mini_lista item={item}/>
+                <Flatlist_mini_lista item={item} id_pedido={props.id} array_bebidas={props.array_bebidas}/>
 
             )}
             keyExtractor={(item,index )=> index.toString()}

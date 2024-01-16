@@ -19,7 +19,8 @@ export interface pedido_props {
     dinheiro?:number;
     pix?:boolean;
     cartao?:cartao;
-
+    //
+    array_bebidas?:string[]
     itens?:Item[]
   }
 export interface cartao{
@@ -36,6 +37,7 @@ export interface user_on{
  
 }
   interface Item {
+    id:string
     name_p: string;
     categoria: "comidas" | "bebidas" | "bar";
     categoria_2?: string;
@@ -60,5 +62,7 @@ export interface user_on{
     dinheiro:number;
     cartao:cartao;
     pix:boolean;
+  //
+    array_bebidas?:string[]
   }
   

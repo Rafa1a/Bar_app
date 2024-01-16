@@ -5,14 +5,14 @@ import { Dispatch } from 'redux'
 //auth
 import { db } from '../auth';
 
-import { collection,doc,onSnapshot,getDocs,query, where, updateDoc} from "firebase/firestore"; 
+import { collection,doc,onSnapshot,getDocs,query, where, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore"; 
 import { setMessage } from './message';
 
 //onSnapshot para atualizar caso alguma informacao mude 
 export const startPedidosListener = () => {
   return (dispatch: any) => {
     try{
-      const q = query(collection(db, "pedidos"), where("status_bar", "==", true));
+      const q = query(collection(db, "pedidos"));
       onSnapshot(q, (snapshot) => {
         const pedidos: any[] = [];
           snapshot.forEach((doc) => {
@@ -38,7 +38,48 @@ export const startPedidosListener = () => {
    
   };
 };
+//atualizar array de pedidos  array_bebidas
+export const fetchPedidos_ordem_adicionar = (id_item:string,id_pedido:string) => {
+  return async (dispatch: any) => {
+    try{
 
+      const q = doc(db, "pedidos",id_pedido);
+
+      await updateDoc(q, {
+        array_bebidas: arrayUnion(id_item)
+      });
+
+    }catch (e) {
+        // console.error("Error fetching documents: ", e);
+        dispatch(setMessage({
+          title: 'Error',
+          text: 'Ocorreu um erro ao contatar o servidor'
+        }))
+      }
+   
+  };
+};
+//atualizar array de pedidos  array_bebidas
+export const fetchPedidos_ordem_retirar = (id_item:string,id_pedido:string) => {
+  return async (dispatch: any) => {
+    try{
+
+      const q = doc(db, "pedidos",id_pedido);
+
+      await updateDoc(q, {
+        array_bebidas: arrayRemove(id_item)
+      });
+
+    }catch (e) {
+        // console.error("Error fetching documents: ", e);
+        dispatch(setMessage({
+          title: 'Error',
+          text: 'Ocorreu um erro ao contatar o servidor'
+        }))
+      }
+   
+  };
+};
 
 //chamada assyncrona com o firebase get () com QUERY e WHERE retornando uma consulta especifica
 
