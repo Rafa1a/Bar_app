@@ -64,5 +64,7 @@ export interface user_on{
     pix:boolean;
   //
     array_bebidas?:string[]
+
+    name_outros?:string
   }
   

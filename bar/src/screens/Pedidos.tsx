@@ -91,7 +91,7 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
                     id={item.id?item.id:''} 
                     key={item.id} 
                     styles 
-                    name_on='Anonymo' 
+                    name_on={item.name_outros?item.name_outros:'Anonymo'}
                     navigation={navigation} 
                     {...item}
                   />);
@@ -102,7 +102,7 @@ const Pedidos = ({ pedidos ,users,navigation }:Props) => {
               array_bebidas={item.array_bebidas}
               itens={item.itens} 
                 id={item.id?item.id:''} key={item.id} 
-                name_on='Anonymo' 
+                name_on={item.name_outros?item.name_outros:'Anonymo'}
                 rua = {item.rua}
                 numero={item.numero}
                 pegar_local={item.pegar_local}
